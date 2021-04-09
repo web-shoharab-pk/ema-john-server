@@ -11,17 +11,17 @@ const port = 4000
 
 app.use(cors())
 
-app.get('/', (req, res) => {
-  res.send("hello from db working")
-})
+
 
 
 const client = new MongoClient(uri, { useNewUrlParser: true, useUnifiedTopology: true });
 client.connect(err => {
-  console.log(err);
+ 
   const productsCollection = client.db("emasohnstore").collection("emajohnproduct");
   const ordersCollection = client.db("emasohnstore").collection("emajohnproductorders");
-
+  app.get('/', (req, res) => {
+    res.send("hello from db working")
+  })
   app.post('/addProduct', (req, res) => {
     const product = req.body;
     console.log(product);
