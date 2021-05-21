@@ -32,6 +32,7 @@ client.connect(err => {
   })
 
   app.get('/products', (req, res) => {
+    // const search = req.query.search;
     productsCollection.find({})
       .toArray((err, documents) => {
         res.send(documents)
